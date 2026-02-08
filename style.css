@@ -1,0 +1,106 @@
+:root {
+    --primary-pink: #ffc4af35;
+    --secondary-pink: #ffc3a0;
+    --heart-red: #ff4d6d;
+    --text-color: #594a4e;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+    /*font-family: 'Dancing Script', cursive;*/
+    font-family: 'Indie Flower', cursive; /* Police principale plus simple */
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 400px;
+}
+
+.gif-container img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    /*font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 2rem; */
+    font-size: 2.8rem; /* Un peu plus grand car cette police est plus fine */
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    /* On retire 'transform' de la transition pour utiliser les propriétés physiques */
+    transition: all 0.4s ease-in-out; 
+    /*font-family: 'Pacifico', cursive;*/
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Pour qu'il respecte bien les marges */
+    font-family: 'Quicksand', sans-serif; /* Police des boutons propre et ronde */
+    font-weight: 600;
+    text-transform: uppercase; /* Un look plus "bouton" mais propre */
+    letter-spacing: 1px;
+}
+
+#yesBtn {
+    background-color: var(--heart-red);
+    color: white;
+    position: relative; /* Assure qu'il reste dans le flux normal */
+}
+
+/* On ajoute une petite animation au message pour qu'il apparaisse en douceur */
+#message {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    color: #d63384;
+    min-height: 1.5em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.success-screen {
+    display: none;
+}
+
+.success-screen h2 {
+    font-size: 2.8rem;
+    color: var(--heart-red);
+    animation: heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+

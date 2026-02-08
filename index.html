@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Babygirl ❤️</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/Users/enz/Desktop/VS_Code/Valentine/style.css">
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <div class="gif-container">
+            <img id="displayGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRlbmN5YTU1dmRncG5idjl5cTRoYTUyMjVxc283bThyOTRmeTBrMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t8xgPfC5oNIRMrNooe/giphy.gif" alt="Cute GIF">
+        </div>
+
+        <div id="askContent">
+            <h1> Will you be my Valentine Babygirl ?</h1>
+            
+            <div class="buttons">
+                <button id="yesBtn" class="btn">OUI !</button>
+                <button id="noBtn" class="btn">non</button>
+            </div>
+            
+            <p id="message"></p>
+        </div>
+
+        <div id="celebration" class="success-screen">
+            <h2> YESSSSSSSS ! Love you mon petit bout de femme ❤️</h2>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
+    const askContent = document.getElementById('askContent');
+    const celebration = document.getElementById('celebration');
+    const displayGif = document.getElementById('displayGif');
+
+    let paddingHorizontal = 30;
+    let paddingVertical = 15;
+    let fontSize = 1.2;
+    let noClickCount = 0;
+
+    const funnyMessages = [
+        "Tu es sûre ? 🥺",
+        "2ème chance chacal",
+        "3ème chance ?? Tu te prends pour qui ?",
+        "Tu crois que je vais te laisser combien de chance ?",
+        "Jvais te marrave",
+        "Je ne suis pas un homme facile...",
+        "Réfléchis encore ou je cours plus avec toi sinon... 🧐",
+        "wsh serieux fais pas d'erreur le S...",
+        "Oh ti es focus sur le mauvais truc toi !",
+        "Même pour un chocolat mon petit ogre ? 🍫",
+        "Vraiment sûre ? 💔",
+        "Je crois que ta decision est prise n'essaye pas plus (ou pas) !! 💔💔💔💔💔",
+        "Regarde comme ce bouton est gros ! ✨",
+        "Il n'y a plus de place pour le NON ! 🛑"
+    ];
+
+    noBtn.addEventListener('click', () => {
+        // Augmenter les valeurs physiques du bouton
+        paddingHorizontal += 20;
+        paddingVertical += 10;
+        fontSize += 0.3;
+
+        // Appliquer les styles (cela va "pousser" le message vers le bas)
+        yesBtn.style.padding = `${paddingVertical}px ${paddingHorizontal}px`;
+        yesBtn.style.fontSize = `${fontSize}rem`;
+        
+        // Changer le message
+        message.innerText = funnyMessages[noClickCount % funnyMessages.length];
+        
+        // Optionnel : on réduit un tout petit peu le bouton NON à chaque fois
+        let noScale = Math.max(0.5, 1 - (noClickCount * 0.1));
+        noBtn.style.transform = `scale(${noScale})`;
+
+        noClickCount++;
+    });
+
+    yesBtn.addEventListener('click', () => {
+        askContent.style.display = 'none';
+        celebration.style.display = 'block';
+        displayGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3V6d3FzOXY5dWY0cnE4Nnd3NnMxMHVzNnYxMm8yZnBhMXI0aGY4aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NoPNkgzHD8HSK6Nr5l/giphy.gif";
+
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    });
+</script>
+</body>
+</html>
